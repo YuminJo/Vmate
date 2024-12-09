@@ -1,4 +1,8 @@
-# 🎼 VMate
+# VMate
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/8ebbde84-fef3-4530-b5a6-1f959a60f886" alt="Vmate" width="400"/>
+</div>
+
 
 ## ✨ 프로젝트 소개 ( プロジェクト紹介 )
 
@@ -10,7 +14,7 @@
 
 ## 📆 프로젝트 기간
 
-**2024.11.01 ~ Current**
+**2024.11.14 ~ Current**
 
 <br>
 
