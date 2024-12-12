@@ -2,17 +2,25 @@ package com.myvirtual.vmate.domain.post.post.dto;
 
 import com.myvirtual.vmate.domain.post.post.entity.Post;
 import lombok.Getter;
+import lombok.NonNull;
 
 import java.time.LocalDateTime;
 
 @Getter
 public class PostDto {
+    @NonNull
     private long id;
+    @NonNull
     private LocalDateTime createDate;
+    @NonNull
     private LocalDateTime modifyDate;
+    @NonNull
     private long authorId;
+    @NonNull
     private String authorName;
+    @NonNull
     private String title;
+    @NonNull
     private String content;
     public PostDto(Post post) {
         this.id = post.getId();

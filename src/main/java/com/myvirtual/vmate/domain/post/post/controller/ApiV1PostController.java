@@ -5,6 +5,7 @@ import com.myvirtual.vmate.domain.post.post.entity.Post;
 import com.myvirtual.vmate.domain.post.post.service.PostService;
 import com.myvirtual.vmate.global.rsData.RsData;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ public class ApiV1PostController {
     private final PostService postService;
     @Getter
     public static class GetPostsResponseBody {
+        @NonNull
         private List<PostDto> items;
         public GetPostsResponseBody(List<Post> items) {
             this.items = items.stream()
