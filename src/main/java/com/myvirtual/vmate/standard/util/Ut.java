@@ -1,13 +1,16 @@
 package com.myvirtual.vmate.standard.util;
 
 import com.myvirtual.vmate.global.app.AppConfig;
-import lombok.SneakyThrows;
 
 public class Ut {
     public static class thread {
-        @SneakyThrows
         public static void sleep(long millis) {
-            Thread.sleep(millis);
+            try {
+                Thread.sleep(millis);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                e.printStackTrace();
+            }
         }
     }
     public static class cmd {
@@ -18,7 +21,12 @@ public class Ut {
         }
         public static void run(String cmd) {
             try {
-                ProcessBuilder processBuilder = new ProcessBuilder("bash", "-c", cmd);
+                ProcessBuilder processBuilder;
+                if (System.getProperty("os.name").toLowerCase().contains("win")) {
+                    processBuilder = new ProcessBuilder("cmd.exe", "/c", cmd);
+                } else {
+                    processBuilder = new ProcessBuilder("bash", "-c", cmd);
+                }
                 Process process = processBuilder.start();
                 process.waitFor();
             } catch (Exception e) {
@@ -54,9 +62,13 @@ public class Ut {
         }
     }
     public static class json {
-        @SneakyThrows
         public static String toString(Object obj) {
-            return AppConfig.getObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+            try {
+                return AppConfig.getObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
     }
 }
